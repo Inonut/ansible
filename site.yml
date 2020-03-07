@@ -3,6 +3,7 @@
   hosts: local_host
   roles:
     - virtualbox_manjaro
+    - vagrant
 
 #- name: install on docker
 #  hosts: arch

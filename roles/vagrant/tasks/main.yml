@@ -1,0 +1,7 @@
+---
+# tasks file for roles/vagrant
+
+- name: install vagrant
+  pacman:
+    name: vagrant
+    state: present
