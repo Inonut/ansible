@@ -1,12 +1,14 @@
 ---
 - name: install on localhost
   hosts: local_host
-
-- name: install on docker
-  hosts: arch
-  gather_facts: false
-  pre_tasks:
-    - name: install python
-      raw: pacman --noconfirm -Sy python
   roles:
-    - add_user
+    - virtualbox_manjaro
+
+#- name: install on docker
+#  hosts: arch
+#  gather_facts: false
+#  pre_tasks:
+#    - name: install python
+#      raw: pacman --noconfirm -Sy python
+#  roles:
+#    - add_user
