@@ -3,5 +3,9 @@
 
 - name: install vagrant
   pacman:
-    name: vagrant
+    name:
+      - vagrant
+      - libvirt
+      - ruby
+      - sshpass
     state: present
