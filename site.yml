@@ -1,15 +1,5 @@
 ---
-- name: install on localhost
-  hosts: local_host
-  roles:
-    - virtualbox_manjaro
-    - vagrant
-
-#- name: install on docker
-#  hosts: arch
-#  gather_facts: false
-#  pre_tasks:
-#    - name: install python
-#      raw: pacman --noconfirm -Sy python
-#  roles:
-#    - add_user
+- name: install on vagrant
+  hosts: vagrant
+  become: true
+  become_method: sudo
