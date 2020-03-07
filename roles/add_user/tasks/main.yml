@@ -1,0 +1,31 @@
+---
+# tasks file for add_user
+
+- name: check user
+  shell: echo {{user}}
+  register: output
+
+- debug:
+    msg: "{{output.stdout}}"
+
+- name: install sudo
+  pacman:
+    name: sudo
+    state: present
+
+- name: echo user
+  user:
+    name: "{{user}}"
+    groups:
+      - wheel
+    state: present
+    shell: /bin/bash
+    createhome: yes
+    home: /home/{{user}}
+
+- name: Allow specified groups to sudo
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '# %wheel.*NOPASSWD'
+    line: '%wheel ALL=(ALL) NOPASSWD: ALL'
