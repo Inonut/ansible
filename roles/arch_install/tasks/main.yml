@@ -7,7 +7,7 @@
 
 - name: install arch
 #  command: "pacstrap {{(partition|selectattr('install_linux', 'equals', 'true')|first).mnt_path}} linux base base-devel efibootmgr grub networkmanager"
-  command: "pacstrap linux base base-devel efibootmgr grub networkmanager"
+  command: "pacstrap /mnt linux base base-devel efibootmgr grub networkmanager"
 
 - name: start swap
   command: "swapon {{item.device}}{{ansible_loop.index}}"
