@@ -1,5 +1,5 @@
 - name: Swap file
-  command: "mkswap {{item.device}}{{ansible_loop.index}}"
+  shell: "mkswap {{item.device}}{{ansible_loop.index}}"
   when: "'swap' in item.flags"
 
 - name: System file

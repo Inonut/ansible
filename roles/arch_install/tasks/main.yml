@@ -6,18 +6,22 @@
   include_tasks: partition.yml
 
 - name: install arch
-  command: "pacstrap {{item.mnt_path}} linux base base-devel efibootmgr grub networkmanager"
+  shell: "pacstrap {{item.mnt_path}} linux base base-devel efibootmgr grub networkmanager"
   when: "item.install_linux is defined and item.install_linux == true"
   loop: "{{ partition }}"
   loop_control:
     extended: yes
 
 - name: start swap
-  command: "swapon {{item.device}}{{ansible_loop.index}}"
+  shell: "swapon {{item.device}}{{ansible_loop.index}}"
   when: "'swap' in item.flags"
   loop: "{{ partition }}"
   loop_control:
     extended: yes
 
 - name: Generate blank fstab
-  command: "genfstab -U -p /mnt >>/mnt/etc/fstab"
+  shell: "genfstab -U -p {{item.mnt_path}} >> /mnt/etc/fstab"
+  when: "item.install_linux is defined and item.install_linux == true"
+  loop: "{{ partition }}"
+  loop_control:
+    extended: yes
