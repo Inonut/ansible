@@ -1,1 +1,47 @@
 ansible_connection: local
+
+# envars
+#editor: nano
+#browser: google-chrome
+#text:
+#  font: DejaVu Sans Mono
+#  size: 18
+
+# time
+#time_zone: Europe/Bucharest
+
+# locale
+#locale: en_US.UTF-8 UTF-8
+#lang: en_US.UTF-8
+
+# base packages
+#pkgs:
+#  - alsa-utils
+#  - base-devel
+#  - git
+#  - linux-headers
+#  - rsync
+#  - sudo
+#  - wget
+#  - curl
+#  - zip
+
+# partition
+partition:
+  - device: /dev/sda
+    label: gpt
+    part_start: 0%
+    part_end: 512MiB
+    flags: [boot, esp]
+
+  - device: /dev/sda
+    label: gpt
+    part_start: 512MiB
+    part_end: 1GiB
+    flags: [swap]
+
+  - device: /dev/sda
+    label: gpt
+    part_start: 1GiB
+    part_end: 100%
+    flags: [lvm]
