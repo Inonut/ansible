@@ -1,5 +1,20 @@
 ---
 # tasks file for roles/arch_install
+# only gpt for now
 
 - name: create partition
   include_tasks: partition.yml
+
+- name: install arch
+#  command: "pacstrap {{(partition|selectattr('install_linux', 'equals', 'true')|first).mnt_path}} linux base base-devel efibootmgr grub networkmanager"
+  command: "pacstrap linux base base-devel efibootmgr grub networkmanager"
+
+- name: start swap
+  command: "swapon {{item.device}}{{ansible_loop.index}}"
+  when: "item.install_linux is defined and item.install_linux == true"
+  loop: "{{ partition }}"
+  loop_control:
+    extended: yes
+
+- name: Generate blank fstab
+  command: "genfstab -U -p /mnt >>/mnt/etc/fstab"

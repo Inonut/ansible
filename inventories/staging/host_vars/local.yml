@@ -50,3 +50,4 @@ partition:
     flags: [lvm]
     fstype: ext4
     mnt_path: /mnt
+    install_linux: true
