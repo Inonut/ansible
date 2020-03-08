@@ -7,5 +7,5 @@
     force: yes
     fstype: "{{item.fstype}}"
     dev: "{{item.device}}{{ansible_loop.index}}"
-    opts: "{{item.opts | default([])}}"
+    opts: "{{item.opts | default()}}"
   when: "'lvm' in item.flags or 'boot' in item.flags"

@@ -1,5 +1,5 @@
 ---
 - name: install arch linux
-  hosts: local
+  hosts: vagrant
   roles:
     - arch_install
