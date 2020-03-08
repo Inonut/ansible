@@ -1,0 +1,12 @@
+- name: Generate fstab
+  shell: "genfstab -U -p {{item.mnt_path}} >> /mnt/etc/fstab"
+
+- copy:
+    src: "{{ role_path }}/files/arch_config.sh"
+    dest: {{item.mnt_path}}
+
+- name: Add some config
+  shell: "arch-chroot {{item.mnt_path}} ./arch_config.sh {{item.device}} {{item.device}} {{hostname}} {{password}} {{time_zone}}"
+
+- name: Unmount all
+  shell: "umount -R {{item.mnt_path}}"

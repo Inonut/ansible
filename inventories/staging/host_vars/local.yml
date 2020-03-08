@@ -8,7 +8,9 @@ ansible_connection: local
 #  size: 18
 
 # time
-#time_zone: Europe/Bucharest
+time_zone: Europe/Bucharest
+hostname: arch
+password: asd
 
 # locale
 #locale: en_US.UTF-8 UTF-8

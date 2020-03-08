@@ -19,9 +19,14 @@
   loop_control:
     extended: yes
 
-- name: Generate blank fstab
-  shell: "genfstab -U -p {{item.mnt_path}} >> /mnt/etc/fstab"
+- name: Config root
+  include_tasks: config_root.yml
   when: "item.install_linux is defined and item.install_linux == true"
   loop: "{{ partition }}"
   loop_control:
     extended: yes
+
+- name: Reboot
+  reboot:
+    connect_timeout: 1
+    reboot_timeout: 1
