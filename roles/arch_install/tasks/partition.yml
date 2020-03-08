@@ -1,16 +1,3 @@
-# posible flags
-#boot
-#root
-#swap
-#hidden
-#raid
-#lvm
-#lba
-#legacy_boot
-#irst
-#esp
-#palo
-
 - name: install parted
   pacman:
     name: parted
@@ -20,7 +7,7 @@
   parted:
     device: "{{item.device}}"
     label: "{{item.label}}"
-    number: "{{ansible_loop.index}}"
+    number: "{{item.number}}"
     part_start: "{{item.part_start}}"
     part_end: "{{ item.part_end }}"
     flags: "{{ item.flags }}"

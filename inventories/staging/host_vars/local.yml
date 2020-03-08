@@ -31,6 +31,7 @@ password: asd
 # partition
 partition:
   - device: /dev/sda
+    number: 1
     label: gpt
     part_start: 0%
     part_end: 512MiB
@@ -40,16 +41,17 @@ partition:
     mnt_path: /boot/efi
 
   - device: /dev/sda
+    number: 2
     label: gpt
     part_start: 512MiB
     part_end: 1GiB
     flags: [swap]
 
   - device: /dev/sda
+    number: 3
     label: gpt
     part_start: 1GiB
     part_end: 100%
     flags: [lvm]
     fstype: ext4
     mnt_path: /mnt
-    install_linux: true

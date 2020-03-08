@@ -6,27 +6,19 @@
   include_tasks: partition.yml
 
 - name: install arch
-  shell: "pacstrap {{item.mnt_path}} linux base base-devel efibootmgr grub networkmanager"
-  when: "item.install_linux is defined and item.install_linux == true"
-  loop: "{{ partition }}"
-  loop_control:
-    extended: yes
+  shell: "pacstrap /mnt linux base base-devel efibootmgr grub networkmanager"
 
 - name: start swap
-  shell: "swapon {{item.device}}{{ansible_loop.index}}"
+  shell: "swapon {{item.device}}{{item.number}}"
   when: "'swap' in item.flags"
   loop: "{{ partition }}"
   loop_control:
     extended: yes
 
-- name: Config root
-  include_tasks: config_root.yml
-  when: "item.install_linux is defined and item.install_linux == true"
-  loop: "{{ partition }}"
-  loop_control:
-    extended: yes
+- name: Generate fstab
+  shell: "genfstab -U -p /mnt >> /mnt/etc/fstab"
 
-- name: Reboot
-  reboot:
-    connect_timeout: 1
-    reboot_timeout: 1
+#- name: Reboot
+#  reboot:
+#    connect_timeout: 1
+#    reboot_timeout: 1

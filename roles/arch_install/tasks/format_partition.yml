@@ -6,6 +6,6 @@
   filesystem:
     force: yes
     fstype: "{{item.fstype}}"
-    dev: "{{item.device}}{{ansible_loop.index}}"
+    dev: "{{item.device}}{{item.number}}"
     opts: "{{item.opts | default()}}"
   when: "'lvm' in item.flags or 'boot' in item.flags"

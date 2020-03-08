@@ -1,9 +1,7 @@
-## only gpt supported for now
-
 - name: mount gpt partition
   mount:
     path: "{{item.mnt_path}}"
-    src: "{{item.device}}{{ansible_loop.index}}"
+    src: "{{item.device}}{{item.number}}"
     fstype: "{{item.fstype}}"
     state: mounted
-  when: "'gpt' == item.label and 'lvm' in item.flags"
+  when: "'lvm' in item.flags"
