@@ -4,8 +4,21 @@
   roles:
     - arch_install
 
-- name: config arch linux
-  hosts: arch_chroot
-  gather_facts: false
-  roles:
-    - arch_config
+#- name: config arch linux
+#  hosts: arch_chroot
+#  gather_facts: false
+#  roles:
+#    - ramdisk_environmen
+#    - grub
+#    - network
+#    - language
+#    - localtime
+#    - root_password
+#    - util_package_install
+#    - yay
+#    - samba
+
+#- name: Reboot
+#  reboot:
+#    connect_timeout: 1
+#    reboot_timeout: 1

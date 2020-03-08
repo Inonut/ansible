@@ -17,8 +17,3 @@
 
 - name: Generate fstab
   raw: "genfstab -U -p {{mount_point}} >> {{mount_point}}/etc/fstab"
-
-#- name: Reboot
-#  reboot:
-#    connect_timeout: 1
-#    reboot_timeout: 1
