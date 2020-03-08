@@ -1,8 +1,9 @@
 ## only gpt supported for now
 
-- name: nount gpt partition
+- name: mount gpt partition
   mount:
     path: "{{item.mnt_path}}"
+    src: "{{item.device}}{{ansible_loop.index}}"
     fstype: "{{item.fstype}}"
     state: mounted
   when: "'gpt' == item.label and 'lvm' in item.flags"
