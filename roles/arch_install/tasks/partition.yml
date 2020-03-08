@@ -1,0 +1,30 @@
+# posible flags
+#boot
+#root
+#swap
+#hidden
+#raid
+#lvm
+#lba
+#legacy_boot
+#irst
+#esp
+#palo
+
+- name: install parted
+  pacman:
+    name: parted
+    state: present
+
+- name: Create partition
+  parted:
+    device: "{{item.device}}"
+    label: "{{item.label}}"
+    number: "{{ansible_loop.index}}"
+    part_start: "{{item.part_start}}"
+    part_end: "{{ item.part_end }}"
+    flags: "{{ item.flags }}"
+    state: present
+  loop: "{{ partition }}"
+  loop_control:
+    extended: yes

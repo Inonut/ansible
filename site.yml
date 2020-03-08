@@ -1,5 +1,0 @@
----
-- name: install on vagrant
-  hosts: vagrant
-  become: true
-  become_method: sudo

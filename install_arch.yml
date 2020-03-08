@@ -1,0 +1,7 @@
+---
+- name: install arch linux
+  hosts: local
+  become: true
+  become_method: sudo
+  roles:
+    - arch_install
