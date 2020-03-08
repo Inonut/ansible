@@ -33,6 +33,8 @@ partition:
     part_start: 0%
     part_end: 512MiB
     flags: [boot, esp]
+    fstype: vfat
+    opts: -F32
 
   - device: /dev/sda
     label: gpt
@@ -45,3 +47,4 @@ partition:
     part_start: 1GiB
     part_end: 100%
     flags: [lvm]
+    fstype: ext4

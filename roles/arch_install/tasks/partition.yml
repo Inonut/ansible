@@ -28,3 +28,9 @@
   loop: "{{ partition }}"
   loop_control:
     extended: yes
+
+- name: Format partition
+  include_tasks: format_partition.yml
+  loop: "{{ partition }}"
+  loop_control:
+    extended: yes

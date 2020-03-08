@@ -1,0 +1,11 @@
+- name: Swap file
+  command: "mkswap {{item.device}}{{ansible_loop.index}}"
+  when: "'swap' in item.flags"
+
+- name: System file
+  filesystem:
+    force: yes
+    fstype: "{{item.fstype}}"
+    dev: "{{item.device}}{{ansible_loop.index}}"
+    opts: "{{item.opts | default([])}}"
+  when: "'lvm' in item.flags or 'boot' in item.flags"
