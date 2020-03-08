@@ -34,3 +34,9 @@
   loop: "{{ partition }}"
   loop_control:
     extended: yes
+
+- name: Mount partition
+  include_tasks: mount.yml
+  loop: "{{ partition }}"
+  loop_control:
+    extended: yes

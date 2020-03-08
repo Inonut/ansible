@@ -35,6 +35,7 @@ partition:
     flags: [boot, esp]
     fstype: vfat
     opts: -F32
+    mnt_path: /boot/efi
 
   - device: /dev/sda
     label: gpt
@@ -48,3 +49,4 @@ partition:
     part_end: 100%
     flags: [lvm]
     fstype: ext4
+    mnt_path: /mnt

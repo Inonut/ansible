@@ -1,5 +1,5 @@
 ---
 # tasks file for roles/arch_install
 
-- name: partition
+- name: create partition
   include_tasks: partition.yml

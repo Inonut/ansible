@@ -1,0 +1,8 @@
+## only gpt supported for now
+
+- name: nount gpt partition
+  mount:
+    path: "{{item.mnt_path}}"
+    fstype: "{{item.fstype}}"
+    state: mounted
+  when: "'gpt' == item.label and 'lvm' in item.flags"
