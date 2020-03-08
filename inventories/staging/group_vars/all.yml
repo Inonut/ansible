@@ -1,1 +1,30 @@
 ansible_python_interpreter: /usr/bin/python
+
+# partition
+mount_point: /mnt
+partition:
+  - device: /dev/sda
+    number: 1
+    label: gpt
+    part_start: 0%
+    part_end: 512MiB
+    flags: [boot, esp]
+    fstype: vfat
+    opts: -F32
+    mnt_path: /boot/efi
+
+  - device: /dev/sda
+    number: 2
+    label: gpt
+    part_start: 512MiB
+    part_end: 1GiB
+    flags: [swap]
+
+  - device: /dev/sda
+    number: 3
+    label: gpt
+    part_start: 1GiB
+    part_end: 100%
+    flags: [lvm]
+    fstype: ext4
+    mnt_path: "{{mount_point}}"

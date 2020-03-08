@@ -4,3 +4,8 @@ ansible_connection: chroot
 ansible_host: /mnt
 ansible_chroot_exe: /usr/bin/arch-chroot
 ansible_executable: /bin/bash
+
+
+time_zone: Europe/Bucharest
+hostname: arch
+password: asd
