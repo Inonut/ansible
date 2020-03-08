@@ -6,7 +6,7 @@
   include_tasks: partition.yml
 
 - name: install arch
-  raw: "pacstrap {{mount_point}} linux base base-devel efibootmgr grub networkmanager"
+  raw: "pacstrap {{mount_point}} linux base base-devel"
 
 - name: start swap
   raw: "swapon {{item.device}}{{item.number}}"
