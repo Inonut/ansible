@@ -1,7 +1,7 @@
 ---
 # tasks file for roles/virtualbox_manjaro
 
-- shell: uname -r | cut -d . -f1-2 | tr -d .
+- raw: uname -r | cut -d . -f1-2 | tr -d .
   register: kernel
 
 - name: install virtualbox
@@ -15,7 +15,7 @@
     state: present
 
 - name: add the VirtualBox Module to your kernel
-  shell: vboxreload
+  raw: vboxreload
 
 - name: echo user
   user:

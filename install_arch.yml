@@ -6,5 +6,6 @@
 
 - name: config arch linux
   hosts: arch_chroot
+  gather_facts: false
   roles:
     - arch_config

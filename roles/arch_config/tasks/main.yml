@@ -1,2 +1,6 @@
 ---
 # tasks file for roles/arch_config
+
+- name: install mkinitcpio
+  raw: "mkinitcpio -p linux"
+

@@ -1,4 +1,6 @@
 ---
 # ansible config host
-ansible_host: local
-ansible_chroot_exe: arch-chroot
+ansible_connection: chroot
+ansible_host: /mnt
+ansible_chroot_exe: /usr/bin/arch-chroot
+ansible_executable: /bin/bash

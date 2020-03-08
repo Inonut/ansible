@@ -2,7 +2,7 @@
 # tasks file for add_user
 
 - name: check user
-  shell: echo {{user}}
+  raw: echo {{user}}
   register: output
 
 - debug:
@@ -19,7 +19,7 @@
     groups:
       - wheel
     state: present
-    shell: /bin/bash
+    raw: /bin/bash
     createhome: yes
     home: /home/{{user}}
 

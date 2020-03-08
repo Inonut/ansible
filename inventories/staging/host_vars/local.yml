@@ -29,6 +29,7 @@ password: asd
 #  - zip
 
 # partition
+mount_point: /mnt
 partition:
   - device: /dev/sda
     number: 1
@@ -54,4 +55,4 @@ partition:
     part_end: 100%
     flags: [lvm]
     fstype: ext4
-    mnt_path: /mnt
+    mnt_path: "{{mount_point}}"
