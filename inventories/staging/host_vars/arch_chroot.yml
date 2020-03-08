@@ -1,0 +1,4 @@
+---
+# ansible config host
+ansible_host: local
+ansible_chroot_exe: arch-chroot

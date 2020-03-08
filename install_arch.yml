@@ -1,5 +1,10 @@
 ---
 - name: install arch linux
-  hosts: vagrant
+  hosts: local
   roles:
     - arch_install
+
+- name: config arch linux
+  hosts: arch_chroot
+  roles:
+    - arch_config
