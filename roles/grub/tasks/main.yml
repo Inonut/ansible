@@ -1,7 +1,7 @@
 ---
 # tasks file for roles/grub
 
-- name: mount boot partition on new system
+- name: mount boot partition on new system for gpt
   mount:
     path: "{{ boot_partition.mnt_path }}"
     src: "{{ boot_partition.device }}{{ boot_partition.number }}"
@@ -9,4 +9,13 @@
     state: mounted
   when: "boot_partition.label == 'gpt'"
 
-# TODO: not finished
+- name: install grub for gpt
+  raw: "grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory={{boot_partition.mnt_path}}"
+  when: "boot_partition.label == 'gpt'"
+
+- name: install grub for mbr
+  raw: "grub-install --recheck {{boot_partition.device}}"
+  when: "boot_partition.label == 'msdos'"
+
+- name: save grub config
+  raw: "grub-mkconfig -o /boot/grub/grub.cfg"
