@@ -10,15 +10,15 @@
   roles:
     - ramdisk_environmen
     - grub
-#    - network
-#    - language
-#    - localtime
+    - network
+    - language
+    - localtime
 #    - root_password
 #    - util_package_install
 #    - yay
 #    - samba
 
-#- name: Reboot
-#  reboot:
-#    connect_timeout: 1
-#    reboot_timeout: 1
+- name: Reboot
+  reboot:
+    connect_timeout: 1
+    reboot_timeout: 1

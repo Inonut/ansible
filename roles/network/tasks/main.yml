@@ -1,0 +1,22 @@
+---
+# tasks file for roles/network
+
+- name: set mashine name
+  template:
+    src: hostname.j2
+    dest: /etc/hostname
+
+- name: set hosts
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+
+- name: install network manager
+  pacman:
+    name: networkmanager
+    state: present
+
+- name: enable network manager
+  systemd:
+    name: NetworkManager
+    enabled: yes

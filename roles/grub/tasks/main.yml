@@ -9,7 +9,12 @@
     state: mounted
   when: "boot_partition.label == 'gpt'"
 
-- name: install grub for gpt
+- name: install grub
+  pacman:
+    name: grub
+    state: present
+
+- name: config grub for gpt
   raw: "grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory={{boot_partition.mnt_path}}"
   when: "boot_partition.label == 'gpt'"
 

@@ -32,8 +32,17 @@
         mnt_path: "{{mount_point}}"
 
     boot_partition: "{{ partition[0] }}"
+    hostname: arch
 
   tasks:
     - debug:
         msg: "{{ boot_partition }}"
       when: "boot_partition.label == 'gpt'"
+
+    - name: modify locale.gen
+      lineinfile:
+        dest: locale.gen
+        line: |
+          en_US.UTF-8 UTF-8
+          en_US ISO-8859-1
+        create: yes
