@@ -19,6 +19,8 @@
 #    - samba
 
 - name: Reboot
-  reboot:
-    connect_timeout: 1
-    reboot_timeout: 1
+  tasks:
+    - name: reboot after install
+      reboot:
+        connect_timeout: 1
+        reboot_timeout: 1

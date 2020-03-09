@@ -2,4 +2,4 @@
 # tasks file for roles/ramdisk_environmen
 
 - name: Create ramdisk environmen
-  row: "mkinitcpio -p linux"
+  raw: "mkinitcpio -p linux"
