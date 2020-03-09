@@ -1,0 +1,12 @@
+---
+# tasks file for roles/grub
+
+- name: mount boot partition on new system
+  mount:
+    path: "{{ boot_partition.mnt_path }}"
+    src: "{{ boot_partition.device }}{{ boot_partition.number }}"
+    fstype: "{{ boot_partition.fstype }}"
+    state: mounted
+  when: "boot_partition.label == 'gpt'"
+
+# TODO: not finished

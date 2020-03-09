@@ -2,20 +2,17 @@
 # defaults file for roles/arch_install
 
 # partition
-boot_mount_path: /boot/efi
-boot_mount_device: /dev/sda
-boot_mount_number: 1
 mount_point: /mnt
 partition:
-  - device: "{{boot_mount_device}}"
-    number: "{{boot_mount_number}}"
+  - device: /dev/sda
+    number: 1
     label: gpt
     part_start: 0%
     part_end: 512MiB
     flags: [boot, esp]
     fstype: vfat
     opts: -F32
-    mnt_path: "{{boot_mount_path}}"
+    mnt_path: /boot/efi
 
   - device: /dev/sda
     number: 2
@@ -32,3 +29,5 @@ partition:
     flags: [lvm]
     fstype: ext4
     mnt_path: "{{mount_point}}"
+
+boot_partition: "{{ partition[0] }}"

@@ -9,7 +9,7 @@
   gather_facts: false
   roles:
     - ramdisk_environmen
-#    - grub
+    - grub
 #    - network
 #    - language
 #    - localtime
