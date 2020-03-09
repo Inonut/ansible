@@ -1,14 +1,12 @@
 ---
 # tasks file for roles/localtime
 
-#- name: Create symbolic link
-#  file:
-#    src: "/usr/share/zoneinfo/{{ time_zone }}"
-#    dest: "/etc/localtime"
-#    state: link
+- name: Create symbolic link
+  file:
+    src: "/usr/share/zoneinfo/{{ time_zone }}"
+    dest: "/etc/localtime"
+    state: link
 
 
 - name: Set timezone
-  timezone:
-    name: "{{ time_zone }}"
-    hwclock: 'UTC'
+  raw: "hwclock --systohc --utc"
