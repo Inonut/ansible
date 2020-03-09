@@ -4,11 +4,11 @@
   roles:
     - arch_install
 
-#- name: config arch linux
-#  hosts: arch_chroot
-#  gather_facts: false
-#  roles:
-#    - ramdisk_environmen
+- name: config arch linux
+  hosts: arch_chroot
+  gather_facts: false
+  roles:
+    - ramdisk_environmen
 #    - grub
 #    - network
 #    - language
