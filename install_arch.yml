@@ -17,9 +17,6 @@
 #    - util_package_install
 #    - yay
 #    - samba
-
-- name: Reboot
-  hosts: local
-  tasks:
+  post_tasks:
     - name: reboot after install
       raw: "reboot"
