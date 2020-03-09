@@ -22,6 +22,4 @@
   hosts: local
   tasks:
     - name: reboot after install
-      reboot:
-        connect_timeout: 1
-        reboot_timeout: 1
+      raw: "reboot"
