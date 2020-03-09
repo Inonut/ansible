@@ -19,6 +19,7 @@
 #    - samba
 
 - name: Reboot
+  hosts: local
   tasks:
     - name: reboot after install
       reboot:
