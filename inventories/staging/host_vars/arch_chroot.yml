@@ -9,3 +9,6 @@ ansible_executable: /bin/bash
 time_zone: Europe/Bucharest
 hostname: arch
 password: asd
+
+user_name: dragos
+user_password: asd

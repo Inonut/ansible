@@ -15,11 +15,13 @@
 
 - name: echo user
   user:
-    name: "{{user}}"
+    name: "{{user_name}}"
+    password: "{{user_password}}"
     groups:
       - wheel
     state: present
-    raw: /bin/bash
+    system: yes
+    shell: /bin/bash
     createhome: yes
     home: /home/{{user}}
 

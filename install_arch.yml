@@ -13,7 +13,8 @@
     - network
     - language
     - localtime
-#    - root_password
+    - root_password
+    - add_user
 #    - util_package_install
 #    - yay
 #    - samba
