@@ -16,7 +16,7 @@
 - name: echo user
   user:
     name: "{{user_name}}"
-    password: "{{user_password}}"
+    password: "{{ user_password | password_hash('sha512') }}"
     groups:
       - wheel
     state: present
